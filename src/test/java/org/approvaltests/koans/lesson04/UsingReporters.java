@@ -22,7 +22,7 @@ import org.junit.Test;
 @UseReporter(QuietReporter.class)
 public class UsingReporters extends Koans {
     @Test
-    @UseReporter(_____.class)
+    @UseReporter(FileLauncherReporter.class)
     public void ConfiguringTheFileLauncherReporter() throws Exception {
         ApprovalFailureReporter reporter = ReporterFactory.get();
         assertReport(reporter, FileLauncherReporter.class);
@@ -31,7 +31,7 @@ public class UsingReporters extends Koans {
     @Test
     public void ConfiguringAClassLevelDefault() throws Exception {
         ApprovalFailureReporter reporter = ReporterFactory.get();
-        assertReport(reporter, _____.class);
+        assertReport(reporter, QuietReporter.class);
     }
 
     @Test
@@ -40,7 +40,7 @@ public class UsingReporters extends Koans {
         ApprovalFailureReporter reporter = ReporterFactory.get();
         MultiReporter multi = (MultiReporter) reporter;
         ApprovalFailureReporter second = multi.getReporters()[1];
-        Assert.assertTrue(second.getClass().getName(), second instanceof _____);
+        Assert.assertTrue(second.getClass().getName(), second instanceof ImageWebReporter);
     }
 
     @Test
@@ -66,7 +66,8 @@ public class UsingReporters extends Koans {
 
     private void assertReport(ApprovalFailureReporter reporter, Class<?> expected) {
         FirstWorkingReporter first = (FirstWorkingReporter) reporter;
-        AlwaysWorkingReporter actual = (AlwaysWorkingReporter) first.getReporters()[1];
+        final EnvironmentAwareReporter actu = first.getReporters()[1];
+        AlwaysWorkingReporter actual = (actu instanceof AlwaysWorkingReporter ? (AlwaysWorkingReporter)actu : null);
         Assert.assertEquals("Please Fill In the Blank ____", expected.getName(),
                 actual.getWrapped().getClass().getName());
     }
