@@ -32,7 +32,7 @@ public class ApprovingTheResult {
     public void MoveTheFileViaCommandLine() throws Exception {
         // Directions:
         // 1)Run the test
-        // 2) The Open a command line (terminal), and paste the command the move command from your clipboard
+        // 2) The Open a command line (terminal), and paste the move command from your clipboard
         Approvals.verify("Moved by command line");
     }
 
@@ -41,7 +41,7 @@ public class ApprovingTheResult {
     public void UseWholeFileInADiffReporter() throws Exception {
         // Directions:
         // You will need to have a diff reporter installed on you system to do this.
-        // 1)Run the test
+        // 1) Run the test
         // 2) Right click the result in your diff tool and select use whole file.
         /*
          * Currently supported Diff Tools are
