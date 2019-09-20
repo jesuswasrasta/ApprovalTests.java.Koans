@@ -7,8 +7,7 @@ import org.approvaltests.core.ApprovalFailureReporter;
 public class _____ implements ApprovalFailureReporter
 {
   @Override
-  public void report(String received, String approved) throws Exception
-  {
+  public void report(String received, String approved) {
     Assert.fail("You need to fill in the blank");
   }
 }

@@ -15,6 +15,7 @@ import org.approvaltests.reporters.UseReporter;
 import org.junit.Assert;
 import org.junit.Test;
 
+
 /**
  * How to do Koans:
  * Step 1: Press the Run Button (Place cursor on the Method name to run a single method)

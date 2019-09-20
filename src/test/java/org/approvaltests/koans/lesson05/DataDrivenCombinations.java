@@ -4,12 +4,9 @@ import org.approvaltests.combinations.CombinationApprovals;
 import org.approvaltests.koans.helpers.Koans;
 import org.junit.Test;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 /**
  * How to do Koans:
