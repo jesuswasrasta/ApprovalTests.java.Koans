@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 /**
  * How to do Koans:
@@ -23,14 +24,14 @@ public class DataDrivenCombinations extends Koans {
 
     @Test
     public void oneDimensionalInputIsTheSameAsArray() throws Exception {
-        String[] beatles = {"John", ___, "Paul", "George", "Ringo"};
+        String[] beatles = {"John", "Yoko", "Paul", "George", "Ringo"};
         CombinationApprovals.verifyAllCombinations(a -> a, beatles);
     }
 
     @Test
     public void twoDimensionalInputGoesByTheSquare() throws Exception {
         Integer[] small = {1, 2, 3};
-        Integer[] big = {11, ____, 55};
+        Integer[] big = {11, 33, 55};
 
         CombinationApprovals.verifyAllCombinations((a, b) -> a * b, small, big);
     }
@@ -39,7 +40,7 @@ public class DataDrivenCombinations extends Koans {
     public void exceptionsAreOk() throws Exception {
         Integer[] numerator = {60, 126, 42};
         Integer[] denominator1 = {3, 2};
-        Integer[] denominator2 = {-1, ____, 1};
+        Integer[] denominator2 = {-1, -2, 1};
 
         CombinationApprovals.verifyAllCombinations((a, b, c) -> a / (b + c), numerator, denominator1, denominator2);
     }
@@ -48,11 +49,11 @@ public class DataDrivenCombinations extends Koans {
     public void workingWithALambda() throws Exception {
         LocalDateTime newMillennium = LocalDateTime.of(2000, Month.JANUARY, 1, 0, 0, 0);
         String[] years = {"yy", "yyyy"};
-        String[] months = {"M", ___, "MMMM"};
+        String[] months = {"M", "MMM", "MMMM"};
         String[] days = {"dd", "EEEE"};
 
         CombinationApprovals.verifyAllCombinations((y, m, d) ->
-                newMillennium.format(DateTimeFormatter.ofPattern(y + "/" + m + "/" + d)), years, months, days);
+                newMillennium.format(DateTimeFormatter.ofPattern(y + "/" + m + "/" + d, Locale.ENGLISH)), years, months, days);
     }
 }
 
